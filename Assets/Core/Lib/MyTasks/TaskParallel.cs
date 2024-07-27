@@ -9,17 +9,13 @@ namespace Core
     {
         [SerializeField] private bool _runOnStart;
 
-        private List<IMyTask> _tasks;
-        private int _completedCount;
+        private List<IMyTask> _tasks = new();
+        private int _completeCount;
         private Action _onComplete;
 
         public bool InProgress { get; private set; }
 
-        private void Awake()
-        {
-            _tasks = new();
-            transform.ForEachSelfChildren<IMyTask>(_tasks.Add);
-        }
+        private void Awake() => transform.ForEachSelfChildren<IMyTask>(_tasks.Add);
 
         private void Start()
         {
@@ -34,7 +30,7 @@ namespace Core
 
             InProgress = true;
             _onComplete = onComplete;
-            _completedCount = 0;
+            _completeCount = 0;
 
             for (int i = 0, iMax = _tasks.Count; i < iMax; i++)
                 _tasks[i].Begin(Complete);
@@ -42,7 +38,7 @@ namespace Core
 
         private void Complete()
         {
-            if (++_completedCount < _tasks.Count)
+            if (++_completeCount < _tasks.Count)
                 return;
 
             InProgress = false;
