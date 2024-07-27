@@ -10,7 +10,7 @@ namespace Core
         [SerializeField] [Min(1)] internal int _repeatCount = 1;
         [SerializeField] private bool _runOnStart;
 
-        private IMyTask[] _tasks;
+        private List<IMyTask> _tasks;
         private int _index;
         private Action _onComplete;
 
@@ -18,12 +18,10 @@ namespace Core
 
         private void Awake()
         {
-            List<IMyTask> iTasks = new(transform.childCount * _repeatCount);
+            _tasks = new();
             
             for (int i = 0; i < _repeatCount; i++)
-                transform.ForEachSelfChildren<IMyTask>(iTasks.Add);
-
-            _tasks = iTasks.ToArray();
+                transform.ForEachSelfChildren<IMyTask>(_tasks.Add);
         }
 
         private void Start()
@@ -46,7 +44,7 @@ namespace Core
 
         private void Next()
         {
-            if (_tasks.Length > ++_index)
+            if (_tasks.Count > ++_index)
                 _tasks[_index].Begin(Next);
             else
             {
