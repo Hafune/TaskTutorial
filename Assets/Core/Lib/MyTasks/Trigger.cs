@@ -27,7 +27,7 @@ namespace Core.Lib
                 return;
 
             _isCompleted = true;
-
+            Debug.Log(name);
             if (_task)
                 (_task as IMyTask)?.Begin();
         }

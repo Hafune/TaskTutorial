@@ -2788,7 +2788,6 @@ GameObject:
   - component: {fileID: 2087962828}
   - component: {fileID: 2087962827}
   - component: {fileID: 2087962826}
-  - component: {fileID: 2087962825}
   - component: {fileID: 2087962824}
   m_Layer: 0
   m_Name: Start
@@ -2826,19 +2825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _task: {fileID: 980183104}
---- !u!114 &2087962825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2087962822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 612c9a201e8ffcb4aab1adf4f7976fd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _material: {fileID: 2100000, guid: 640da213eb8f53f48a0fc46188fe1801, type: 2}
 --- !u!135 &2087962826
 SphereCollider:
   m_ObjectHideFlags: 0
