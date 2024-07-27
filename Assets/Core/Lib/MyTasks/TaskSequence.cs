@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Lib;
 using UnityEngine;
 
@@ -10,12 +9,10 @@ namespace Core
     {
         [SerializeField] [Min(1)] internal int _repeatCount = 1;
         [SerializeField] private bool _runOnStart;
-        [SerializeField] private bool _includeInactive;
 
         private IMyTask[] _tasks;
         private int _index;
-
-        [CanBeNull] private Action _onComplete;
+        private Action _onComplete;
 
         public bool InProgress { get; private set; }
 
@@ -24,7 +21,7 @@ namespace Core
             List<IMyTask> iTasks = new(transform.childCount * _repeatCount);
             
             for (int i = 0; i < _repeatCount; i++)
-                transform.ForEachSelfChildren<IMyTask>(iTasks.Add, _includeInactive);
+                transform.ForEachSelfChildren<IMyTask>(iTasks.Add);
 
             _tasks = iTasks.ToArray();
         }

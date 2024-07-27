@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using Lib;
-using Reflex;
 using UnityEngine;
 
 namespace Core
@@ -13,8 +11,7 @@ namespace Core
 
         private IMyTask[] _tasks;
         private int _completedCount;
-
-        [CanBeNull] private Action _onComplete;
+        private Action _onComplete;
 
         public bool InProgress { get; private set; }
 

@@ -6,6 +6,7 @@ public class CheckPoint : MonoBehaviour
     public event Action OnEnter;
 
     [SerializeField] private Material _material;
+    private Material _lastMaterial;
 
     private MeshRenderer _meshRenderer;
 
@@ -18,7 +19,9 @@ public class CheckPoint : MonoBehaviour
             Debug.Log(name);
             transform.localScale = Vector3.one * 1.1f;
             OnEnter?.Invoke();
+            _lastMaterial = _meshRenderer.material; 
             _meshRenderer.material = _material;
+            _material = _lastMaterial;
         }
     }
 }
